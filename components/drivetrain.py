@@ -16,3 +16,16 @@ class Drivetrain:
         self.lm = wpilib.MotorControllerGroup(
             self.fl_motor, self.bl_motor
         )
+
+        self.rD = wpilib.drive.DifferentialDrive(
+            self.lm, self.rm
+        )
+
+        self.timer = wpilib.Timer()
+
+    def arcadeDrive(self, forward, turn):
+        self.forward = forward
+        self.turn = turn
+
+    def execute(self):
+        self.rD.arcadeDrive(self.forward, self.turn)
