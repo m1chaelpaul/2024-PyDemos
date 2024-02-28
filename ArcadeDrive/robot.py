@@ -20,4 +20,4 @@ class MyRobot(wpilib.TimedRobot):
         self.robotDrive = wpilib.drive.DifferentialDrive(self.lm, self.rm)
 
     def teleopPeriodic(self):
-        self.robotDrive.arcadeDrive(-self.robotDrive.arcadeDrive(self.Joystick.getY(), self.Joystick.getX()))
+        self.robotDrive.arcadeDrive(self.robotDrive.arcadeDrive(self.Joystick.getY(), self.Joystick.getX()))
