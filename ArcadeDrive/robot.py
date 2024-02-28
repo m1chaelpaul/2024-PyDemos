@@ -13,19 +13,11 @@ class MyRobot(wpilib.TimedRobot):
         self.Joystick = wpilib.Joystick(8)
 
         #create motor group
-        self.rm = wpilib.MotorControllerGroup(
-            self.fr_motor, self.br_motor
-        )
-        self.lm = wpilib.MotorControllerGroup(
-            self.fl_motor, self.bl_motor
-        )
+        self.rm = wpilib.MotorControllerGroup(self.fr_motor, self.br_motor)
+        self.lm = wpilib.MotorControllerGroup(self.fl_motor, self.bl_motor)
 
         self.rm.setInverted(True)
-        self.robotDrive = wpilib.drive.DifferentialDrive(
-            self.lm, self.rm
-        )
+        self.robotDrive = wpilib.drive.DifferentialDrive(self.lm, self.rm)
 
     def teleopPeriodic(self):
-        self.robotDrive.arcadeDrive(
-            -self.robotDrive.arcadeDrive(self.Joystick.getY(), self.Joystick.getX())
-        )
+        self.robotDrive.arcadeDrive(-self.robotDrive.arcadeDrive(self.Joystick.getY(), self.Joystick.getX()))
