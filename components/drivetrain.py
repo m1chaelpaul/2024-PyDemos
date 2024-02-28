@@ -9,19 +9,9 @@ class Drivetrain:
     bl_motor: phoenix5.WPI_TalonSRX 
 
     def setup(self):
-        self.rm = wpilib.MotorControllerGroup(
-            self.fr_motor, self.br_motor
-        )
-
-        self.lm = wpilib.MotorControllerGroup(
-            self.fl_motor, self.bl_motor
-        )
-
-        self.rD = wpilib.drive.DifferentialDrive(
-            self.lm, self.rm
-        )
-
-        self.timer = wpilib.Timer()
+        self.rm = wpilib.MotorControllerGroup(self.fr_motor, self.br_motor)
+        self.lm = wpilib.MotorControllerGroup(self.fl_motor, self.bl_motor)
+        self.rD = wpilib.drive.DifferentialDrive(self.lm, self.rm)
 
     def arcadeDrive(self, forward, turn):
         self.forward = forward
