@@ -21,6 +21,5 @@ class MyRobot(magicbot.MagicRobot):
         self.robDrive = wpilib.drive.DifferentialDrive(self.rightMotors, self.leftMotors)
         self.controller = wpilib.Joystick(0)
 
-
     def teleopPeriodic(self):
         self.robDrive.arcadeDrive(self.controller.getY(), self.controller.getX())
