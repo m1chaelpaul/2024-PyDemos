@@ -19,7 +19,7 @@ class MyRobot(magicbot.MagicRobot):
         self.rightMotors = wpilib.MotorControllerGroup(self.fr_motor, self.br_motor)
         self.leftMotors = wpilib.MotorControllerGroup(self.bl_motor, self.br_motor)
         self.robDrive = wpilib.drive.DifferentialDrive(self.rightMotors, self.leftMotors)
-        self.controller = wpilib.Joystick(8)
+        self.controller = wpilib.Joystick(0)
 
 
     def teleopPeriodic(self):
