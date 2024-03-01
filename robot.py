@@ -24,5 +24,3 @@ class MyRobot(magicbot.MagicRobot):
 
     def teleopPeriodic(self):
         self.robDrive.arcadeDrive(self.controller.getY(), self.controller.getX())
-
-    
