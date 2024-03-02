@@ -23,6 +23,9 @@ class MyRobot(magicbot.MagicRobot):
 
 
     def teleopPeriodic(self):
-        self.drivetrain.arcadeDrive(self.controller.getY(), self.controller.getX())
+        try:
+            self.drivetrain.arcadeDrive(self.controller.getY(), self.controller.getX())
+        except:
+            self.onException()
 
     
