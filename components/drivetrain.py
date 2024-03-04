@@ -10,8 +10,8 @@ class Drivetrain:
     br_motor: phoenix5.WPI_TalonSRX
     bl_motor: phoenix5.WPI_TalonSRX 
 
-    forward= will_reset_to(0)
-    backward= will_reset_to(0)
+    forward = will_reset_to(0)
+    turn = will_reset_to(0)
 
     def setup(self):
         self.rm = wpilib.MotorControllerGroup(self.fr_motor, self.br_motor)

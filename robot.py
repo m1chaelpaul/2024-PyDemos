@@ -3,7 +3,6 @@ import wpilib
 import wpilib.drive  
 import phoenix5
 from components.drivetrain import Drivetrain
-from components.joystick import Joystick
 from components.controller import Controller
 from wpilib import SmartDashboard
 import navx
@@ -11,7 +10,6 @@ import navx
 class MyRobot(magicbot.MagicRobot):
 
     drivetrain: Drivetrain
-    joystick: Joystick
     controller: Controller
 
     def createObjects(self):
@@ -28,14 +26,13 @@ class MyRobot(magicbot.MagicRobot):
 
 
     def teleopPeriodic(self):
-        try:
-            if self.joystick.getTrigger():
+            if self.controller.getTrigger():
                 self.controller.turn_to_angle(180)
             else:
-                self.drivetrain.arcadeDrive(self.controller.getY(), self.controller.getX())
+                self.drivetrain.arcadeDrive(
+                    self.controller.getY() * 0.5, 
+                    -self.controller.getX() * 0.5
+                )
                 
-        except:
-            self.onException()
-
-        SmartDashboard.putNumber("JOYSTICK X: ", self.controller.getX())
-        SmartDashboard.putBoolean("JOYSTICK Y:", self.controller.getY())
+            SmartDashboard.putNumber("JOYSTICK X: ", self.controller.getX())
+            SmartDashboard.putBoolean("JOYSTICK Y:", self.controller.getY())
